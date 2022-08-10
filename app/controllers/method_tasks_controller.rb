@@ -1,0 +1,2 @@
+class MethodTasksController < ApplicationController
+end

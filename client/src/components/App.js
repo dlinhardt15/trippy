@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import TripPage from "./TripPage";
+import Welcome from "./Welcome";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,9 +19,11 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/trips")
-  })
+  // useEffect(() => {
+  //   fetch("/trips")
+  //   .then(response => response.json())
+  //   .then(data => setTrips(data))
+  // }, [])
 
   if (!user) return (
     <main>
@@ -43,7 +46,10 @@ function App() {
       <main>
         <Switch>
           <Route path="/welcome">
-            <TripPage />
+            <Welcome />
+          </Route>
+          <Route path="/trips">
+            <TripPage trips={trips} />
           </Route>
         </Switch>
       </main>

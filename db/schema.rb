@@ -10,11 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_09_192335) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_09_225654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "method_tasks", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "due_date"
+    t.boolean "complete"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "due_date"
+    t.boolean "complete", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_tasks_on_trip_id"
+  end
+
+  create_table "travel_methods", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,4 +62,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_09_192335) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "tasks", "trips"
 end
