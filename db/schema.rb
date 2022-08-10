@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_09_225654) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_10_160323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "method_tasks", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "due_date"
     t.boolean "complete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "due_date"
+    t.integer "travel_method_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -31,11 +32,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_09_225654) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "due_date"
     t.boolean "complete", null: false
     t.bigint "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "due_date"
     t.index ["trip_id"], name: "index_tasks_on_trip_id"
   end
 
@@ -47,11 +48,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_09_225654) do
 
   create_table "trips", force: :cascade do |t|
     t.string "name"
-    t.datetime "departure_date"
     t.integer "user_id"
     t.integer "travel_method_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "departure_date"
   end
 
   create_table "users", force: :cascade do |t|

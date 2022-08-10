@@ -1,3 +1,6 @@
 class TravelMethodsController < ApplicationController
-    has_many :method_tasks
+
+    def index
+        render json: TravelMethod.all
+    end
 end

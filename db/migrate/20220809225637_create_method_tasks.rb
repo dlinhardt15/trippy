@@ -3,7 +3,7 @@ class CreateMethodTasks < ActiveRecord::Migration[7.0]
     create_table :method_tasks do |t|
       t.string :name
       t.string :description
-      t.datetime :due_date
+      t.integer :due_date
       t.boolean :complete
       
 

@@ -5,6 +5,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import TripPage from "./TripPage";
 import Welcome from "./Welcome";
+import NewTripForm from "./NewTripForm";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,11 +20,11 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   fetch("/trips")
-  //   .then(response => response.json())
-  //   .then(data => setTrips(data))
-  // }, [])
+  useEffect(() => {
+    fetch("/trips")
+    .then(response => response.json())
+    .then(data => setTrips(data))
+  }, [])
 
   if (!user) return (
     <main>
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/trips">
             <TripPage trips={trips} />
+          </Route>
+          <Route path="/newtrip">
+            <NewTripForm user={user} trips={trips} setTrips={setTrips}/>
           </Route>
         </Switch>
       </main>
