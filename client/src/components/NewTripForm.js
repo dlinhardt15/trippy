@@ -1,11 +1,15 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
+import {NavLink} from "react-router-dom";
 
-export default function NewTripForm ({setTrips, trips}) {
-    const [formData, setFormData] = useState({
+export default function NewTripForm ({user, setTrips, trips}) {
+    const defaultFormData = {
+        user_id: user.id,
         name: "",
         departure_date: "",
         travel_method_id: ""
-    })
+    }
+    
+    const [formData, setFormData] = useState(defaultFormData)
 
     function handleChange (e) {
         const {name, value} = e.target;
@@ -23,6 +27,7 @@ export default function NewTripForm ({setTrips, trips}) {
             body: JSON.stringify(formData),
           }).then(response => response.json())
           .then(data => setTrips([...trips, data]))
+        setFormData(defaultFormData)
     }
     
     return (

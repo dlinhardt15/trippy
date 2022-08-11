@@ -30,34 +30,37 @@ function Login({ onLogin }) {
   return (
     <div>
     <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+        <p id="trippy-title">Trippy.</p>
+        <label htmlFor="username">Username: </label>
         <input
           type="text"
           id="username"
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
+        /><br></br>
+        <label htmlFor="password">Password: </label>
         <input
           type="password"
           id="password"
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+        /><br></br>
         <button variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
         </button>
         {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
+        
     </form>
-    
-    Not a User Yet?
-    <NavLink to="/signup">
+    {/* <br></br> */}
+    <p id="link-to-signup">Not a User Yet? 
+      <NavLink to="/signup">
         Sign Up Here!
-    </NavLink>
+      </NavLink>
+    </p>
     </div>
   );
 }

@@ -1,0 +1,13 @@
+#nav-bar {
+    height: 100px;
+    background-color: #31d425;
+    text-align: center;
+    
+}
+
+span {
+    padding: 100px;
+    font-size: 30px;
+    text-decoration: none;
+    vertical-align: center;
+}
