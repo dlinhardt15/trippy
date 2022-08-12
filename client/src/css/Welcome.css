@@ -1,0 +1,15 @@
+#welcome-message {
+    text-align: center;
+    font-size: 80px;
+    margin: auto;
+    width: 70%;
+    background-color: #31d425;
+    vertical-align: center;
+    border-radius: 30px;
+    /* display: flex;
+    justify-items: center; */
+    box-shadow: 3px 3px 3px 3px darkslategray;
+    position: absolute;
+    top: 50%;
+    transform: translate(20%, -50%);
+}

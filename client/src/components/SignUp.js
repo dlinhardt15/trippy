@@ -36,47 +36,49 @@ function SignUp({ onLogin }) {
 
   return (
     <div>
-    <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+    <form onSubmit={handleSubmit} id="sign-up-form">
+    <p>Enter Your Information Below</p>
+    <label htmlFor="name">Name: </label>
+        <input  
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        /><br></br>
+        <label htmlFor="username">Username: </label>
         <input
           type="text"
           id="username"
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
+        /><br></br>
+        <label htmlFor="password">Password: </label>
         <input
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
-        />
-        <label htmlFor="password">Password Confirmation</label>
+        /><br></br>
+        <label htmlFor="password">Password Confirmation: </label>
         <input
           type="password"
           id="password_confirmation"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
-        />
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        /><br></br>
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
         {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
     </form>
-    Already a User?
+    <p id="link-to-login">Already a User?
     <NavLink to="/login">
         Login Here!
     </NavLink>
+    </p>
     </div>
   );
 }

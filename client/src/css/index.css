@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background-image: URL("https://thumbs.dreamstime.com/b/vector-travel-pattern-seamless-background-illustration-113988424.jpg");
+}

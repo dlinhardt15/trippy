@@ -1,13 +1,30 @@
 #nav-bar {
-    height: 100px;
+    height: 120px;
     background-color: #31d425;
-    text-align: center;
-    
+    vertical-align: center;
+    text-decoration-line: none;
+    display: flex;
+    justify-content: space-between;
+    /* margin: -120px 0 0 120px; */
 }
 
 span {
-    padding: 100px;
-    font-size: 30px;
-    text-decoration: none;
-    vertical-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    width: 150px;
+    /* height: 125px; */
+    display: inline-block;
+    color: black;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+
+br {
+    height: 8px;
+}
+
+span:hover {
+    color: white;
 }

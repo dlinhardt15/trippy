@@ -4,14 +4,23 @@ export default function TaskCard ({task}) {
     const [complete, setComplete] = useState(false)
 
     function handleUpdate (task) {
-        
-        fetch(`/tasks/${task.id}`, {
-            method: "PATCH",
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify({complete: complete ? false : true})
-        })
-        .then(response => response.json())
-        .then(data => setComplete(data.complete))
+        if ("travel_method_id" in task) {
+            fetch(`/tasks/${task.id}`, {
+                method: "PATCH",
+                headers: {"Content-Type" : "application/json"},
+                body: JSON.stringify({complete: complete ? false : true})
+            })
+            .then(response => response.json())
+            .then(data => setComplete(data.complete))
+    }   else {
+            fetch(`/methodtasks/${task.id}`, {
+                method: "PATCH",
+                headers: {"Content-Type" : "application/json"},
+                body: JSON.stringify({complete: complete ? false : true})
+            })
+            .then(response => response.json())
+            .then(data => setComplete(data.complete))
+    }
     }
 
     return (
