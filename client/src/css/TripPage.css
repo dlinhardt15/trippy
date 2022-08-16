@@ -1,0 +1,29 @@
+.trips-container {
+    display: grid;
+    text-align: center;
+}
+
+#trip-card {
+    padding: 30px;
+}
+
+.get-trip-form {
+    display: grid;
+    text-align: center;
+    font-size: 35px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    width: 30%;
+    height: 90px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px 3px darkslategray;
+}
+
+.get-trip-form:hover {
+    transform: scale(1.1);
+    color: white;
+    background-color: #31d425;
+}

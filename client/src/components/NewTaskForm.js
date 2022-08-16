@@ -1,4 +1,5 @@
 import {useState} from "react";
+import '../css/NewTaskForm.css';
 
 export default function NewTaskForm ({trip, setTasks, tasks}) {
     
@@ -33,14 +34,14 @@ export default function NewTaskForm ({trip, setTasks, tasks}) {
 
     return (
         <div>
-            <form onSubmit={e => handleAddTask(e)}>
-                <label>Name</label>
-                <input id="new-task-name" name="name" value={taskForm.name} placeholder="Name Your Task" onChange={handleChange}></input>
-                <label>Description</label>
-                <input id="new-task-description" name="description" value={taskForm.description} placeholder="What needs to be done?" onChange={handleChange}></input>
-                <label>Due Date</label>
-                <input id="new-task-due-date" name="due_date" value={taskForm.due_date} onChange={handleChange} placeholder="How early should it be done?" style={{width: 175}}></input>
-                <button>Add it to the List!</button>
+            <form onSubmit={e => handleAddTask(e)} id="new-task-form">
+                <label>Name: </label>
+                <input className="input-field" id="new-task-name" name="name" value={taskForm.name} placeholder="Name Your Task" onChange={handleChange}></input>
+                <br></br><label>Description: </label>
+                <input className="input-field" id="new-task-description" name="description" value={taskForm.description} placeholder="What needs to be done?" onChange={handleChange}></input>
+                <br></br><label>Due Date: </label>
+                <input className="input-field" id="new-task-due-date" name="due_date" value={taskForm.due_date} onChange={handleChange} placeholder="How early should it be done?"></input>
+                <br></br><button id="add-task">Add it to the List!</button>
             </form>
         </div>
     )

@@ -36,8 +36,8 @@ function SignUp({ onLogin }) {
 
   return (
     <div>
-    <form onSubmit={handleSubmit} id="sign-up-form">
-    <p>Enter Your Information Below</p>
+    <form onSubmit={handleSubmit} id="sign-up-form" className="entry-form">
+    <p><strong>Enter Your Information Below</strong></p>
     <label htmlFor="name">Name: </label>
         <input  
           type="text"
@@ -69,7 +69,7 @@ function SignUp({ onLogin }) {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         /><br></br>
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+        <button className="main-page-button" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
         {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}

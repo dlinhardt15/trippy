@@ -1,37 +1,47 @@
 import TaskCard from "./TaskCard";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import NewTaskForm from "./NewTaskForm";
+import '../css/TripCard.css';
 
 export default function TripCard ({trip, handleDelete}) {
     // console.log(trip)
     const [expandTasks, setExpandTasks] = useState(false)
     const [expandForm, setExpandForm] = useState(false)
-    const allTasks = trip.method_tasks.concat(trip.tasks)
-    const sortedTasks = allTasks.sort((a, b) => (a.due_date > b.due_date ? -1 : 1))
-    
+    const [myTasks, setMyTasks] = useState([])
+
+    const tripTasks = async () => {
+        const allTasks = await trip.method_tasks.concat(trip.tasks)
+        const sortedTasks = await allTasks.sort((a, b) => (a.due_date > b.due_date ? -1 : 1))
+        setMyTasks(sortedTasks)
+    }
+
+    useEffect(() => {
+        tripTasks()
+    }, [])
+
     function handleExpandTasks () {
         setExpandTasks(expandTasks ? false : true)
     }
+
     function handleExpandForm () {
         setExpandForm(expandForm ? false : true)
     }
 
     return (
-        <div>
+        <div id="individual-trip">
             <div className="trip-name">Trip: {trip.name}</div>
             <div className="trip-departure-date">Departure Date: {trip.departure_date}</div>
-            <button onClick={handleExpandTasks}>{expandTasks ? "Hide Tasks" : "Show Tasks"}</button>
-            {expandTasks ? (
-                <div className="trip-tasks">{sortedTasks.map(task => {
+            <button className="trip-button" onClick={handleExpandTasks}>{expandTasks ? "Hide Tasks" : "Show Tasks"}</button>
+            <button className="trip-button" onClick={handleExpandForm}>{expandForm ? "I have enough to do" : "Add a Task"}</button>
+            <button className="trip-button" id="delete-trip" onClick={() => handleDelete(trip.id)}>Delete Trip</button>
+            {(expandTasks && myTasks.length > 0) ? (
+                <div className="trip-tasks">{myTasks.map(task => {
                     return (
-                        <TaskCard task={task}/>
+                        <TaskCard setTasks={setMyTasks} myTasks={myTasks} task={task}/>
                     )
                 })}</div>
             ) : null}
-            <button onClick={handleExpandForm}>{expandForm ? "I have enough to do" : "Add a Task"}</button>
             {expandForm ? (<div><NewTaskForm trip={trip}/></div>) : null}
-            <button id="delete-trip" onClick={() => handleDelete(trip.id)}>Delete Trip</button>
-            
         </div>
     )
 }

@@ -11,8 +11,7 @@ import '../css/App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [trips, setTrips] = useState([])
-  const [tasks, setTasks] = useState([])
-  
+  // const [tasks, setTasks] = useState([])
 
   // log in
   useEffect(() => {
@@ -30,11 +29,11 @@ function App() {
     .then(data => setTrips(data))
   }, [user])
   // get tasks
-  useEffect(() => {
-    fetch("/tasks")
-    .then(response => response.json())
-    .then(data => setTasks(data))
-  }, [])
+  // useEffect(() => {
+  //   fetch("/tasks")
+  //   .then(response => response.json())
+  //   .then(data => setTasks(data))
+  // }, [])
   // delete trip
   function handleDelete(id) {
     console.log("delete")
@@ -72,7 +71,7 @@ function App() {
             <Welcome />
           </Route>
           <Route path="/trips">
-            <TripPage handleDelete={handleDelete} trips={trips} user={user} tasks={tasks} setTasks={setTasks}/>
+            <TripPage handleDelete={handleDelete} trips={trips} user={user}/>
           </Route>
           <Route path="/newtrip">
             <NewTripForm user={user} trips={trips} setTrips={setTrips}/>

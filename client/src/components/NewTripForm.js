@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {NavLink} from "react-router-dom";
+import '../css/NewTripForm.css';
 
 export default function NewTripForm ({user, setTrips, trips}) {
     const defaultFormData = {
@@ -32,19 +32,19 @@ export default function NewTripForm ({user, setTrips, trips}) {
     
     return (
         <div>
-            <form onSubmit={e => handleSubmit(e)}>
-                <label>Name</label>
-                <input id="trip-name" name="name" value={formData.name} onChange={handleChange} placeholder="Name Your Trip"></input>
-                <label>Departure Date</label>
-                <input id="departure-date" name="departure_date" value={formData.departure_date} type="date" onChange={handleChange} placeholder="YYYY/MM/DD"></input>
-                <label>Method of Transportation</label>
+            <form onSubmit={e => handleSubmit(e)} id="new-trip-form">
+                <label className="new-trip-label">Name: </label>
+                <input className="new-trip-input" id="trip-name" name="name" value={formData.name} onChange={handleChange} placeholder="Name Your Trip"></input>
+                <label className="new-trip-label">Departure Date: </label>
+                <input id="departure-date" name="departure_date" className="new-trip-input" value={formData.departure_date} type="date" onChange={handleChange} placeholder="YYYY/MM/DD"></input>
+                <label className="new-trip-label">Method of Transportation: </label>
                 <select id="travel-method-option" name="travel_method_id" onChange={handleChange} value={formData.travel_method_id}>
                     <option>Choose One</option>
                     <option value="1">Plane</option>
                     <option value="2">Train</option>
                     <option value="3">Automobile</option>
                 </select>
-                <button>Bon Voyage!</button>
+                <button id="bon-voyage">Bon Voyage!</button>
             </form>
         </div>
     )

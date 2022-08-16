@@ -29,7 +29,7 @@ function Login({ onLogin }) {
 
   return (
     <div>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="entry-form">
         <p id="trippy-title">Trippy.</p>
         <label htmlFor="username">Username: </label>
         <input
@@ -47,7 +47,7 @@ function Login({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         /><br></br>
-        <button variant="fill" color="primary" type="submit">
+        <button className="main-page-button" variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
         </button>
         {/* {errors.map((err) => (
@@ -56,7 +56,7 @@ function Login({ onLogin }) {
         
     </form>
     {/* <br></br> */}
-    <p id="link-to-signup">Not a User Yet? 
+    <p id="link-to-signup">Not a User Yet? <br></br>
       <NavLink to="/signup">
         Sign Up Here!
       </NavLink>

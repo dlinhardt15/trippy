@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :create, :destroy]
   patch "/tasks/:id", to: "tasks#update"
   patch "/methodtasks/:id", to: "method_tasks#update"
+  get "tasks/:id", to: "tasks#show"
+  get "/methodtasks/:id", to: "method_tasks#show"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
