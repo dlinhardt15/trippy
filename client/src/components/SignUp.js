@@ -38,7 +38,10 @@ function SignUp({ onLogin }) {
     <div>
     <form onSubmit={handleSubmit} id="sign-up-form" className="entry-form">
     <p><strong>Enter Your Information Below</strong></p>
-    <label htmlFor="name">Name: </label>
+    {errors.map((err) => (
+      <div className="error-message" key={err}>{err}</div>
+    ))}
+    <label htmlFor="name">Name: </label>    
         <input  
           type="text"
           id="name"
@@ -70,9 +73,6 @@ function SignUp({ onLogin }) {
           autoComplete="current-password"
         /><br></br>
         <button className="main-page-button" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        {/* {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))} */}
     </form>
     <p id="link-to-login">Already a User?
     <NavLink to="/login">
