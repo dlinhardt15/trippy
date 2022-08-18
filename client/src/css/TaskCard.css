@@ -1,0 +1,46 @@
+#task {
+    padding: 5px;
+    font-weight: lighter;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px 3px darkslategray;
+    /* margin-bottom: 20px;
+    margin-top: 20px; */
+    margin: 20px;
+} 
+
+#task:hover {
+    background-color: #31d425;
+    color: white;
+}
+/* 
+#task-complete {
+    font-size: 18px;
+    text-align: left;
+    margin-left: 0;
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+#task-name {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#task-description {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#task-due-date {
+    grid-column: 2;
+    grid-row: 3;
+}
+*/
+#task-button {
+    font-size: 18px;
+    width: 10px;
+}
+
+#task-button:hover {
+    cursor: pointer;
+} 

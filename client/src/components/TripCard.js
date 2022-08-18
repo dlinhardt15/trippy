@@ -4,7 +4,8 @@ import NewTaskForm from "./NewTaskForm";
 import '../css/TripCard.css';
 
 export default function TripCard ({trip, handleDelete}) {
-    // console.log(trip)
+    // const today = (new Date().toISOString().slice(0, 10))
+    console.log(typeof trip.departure_date)
     const [expandTasks, setExpandTasks] = useState(false)
     const [expandForm, setExpandForm] = useState(false)
     const [myTasks, setMyTasks] = useState([])
@@ -34,6 +35,7 @@ export default function TripCard ({trip, handleDelete}) {
             <button className="trip-button" onClick={handleExpandTasks}>{expandTasks ? "Hide Tasks" : "Show Tasks"}</button>
             <button className="trip-button" onClick={handleExpandForm}>{expandForm ? "I have enough to do" : "Add a Task"}</button>
             <button className="trip-button" id="delete-trip" onClick={() => handleDelete(trip.id)}>Delete Trip</button>
+            {/* {today - trip.departure_date} days left! */}
             {(expandTasks && myTasks.length > 0) ? (
                 <div className="trip-tasks">{myTasks.map(task => {
                     return (

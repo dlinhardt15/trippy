@@ -1,4 +1,4 @@
-// import {useState} from "react";
+import '../css/TaskCard.css';
 
 export default function TaskCard ({task, setTasks, myTasks}) {
 
@@ -34,11 +34,11 @@ export default function TaskCard ({task, setTasks, myTasks}) {
     }
 
     return (
-        <div>
-            <p>Task: {task.name}</p>
-            <p>Description: {task.description}</p>
-            <p>Due Date: {task.due_date} days before trip</p>
-            <p>Complete: <span onClick={() => handleUpdate(task)}>{task.complete ? "✅" : "❌"}</span></p>
+        <div id="task">
+            <p id="task-name"><strong>Task:</strong> {task.name}</p>
+            <p id="task-description"><strong>Description:</strong> {task.description}</p>
+            <p id="task-due-date"><strong>Due Date:</strong> {task.due_date} days before trip</p>
+            <p><strong>Complete:</strong> <span id="task-button" onClick={() => handleUpdate(task)}>{task.complete ? "✅" : "❌"}</span></p>
         </div>
     )
 }

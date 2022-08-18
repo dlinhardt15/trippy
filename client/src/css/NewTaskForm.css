@@ -1,6 +1,7 @@
 #new-task-form {
     text-align: center;
     width: 500px;
+    margin: auto;
     margin-top: 20px;
 }
 
@@ -10,6 +11,7 @@
     width: 222px;
     border-radius: 5px;
     margin: auto;
+    margin-bottom: 10px;
 }
 
 #add-task {
