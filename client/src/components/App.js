@@ -51,9 +51,15 @@ function App() {
         <Switch>
         <Route path="/signup">
            <SignUp onLogin={setUser}/>
+           <div className="signup-message">
+            Welcome to <strong>Trippy.</strong> Create an account to make sure you have everything you need for your upcoming trips.
+           </div>
           </Route>
         <Route path="/">
            <Login onLogin={setUser} />
+           <div className="signup-message">
+            Welcome to <strong>Trippy.</strong> Log in to make sure you have everything you need for your upcoming trips.
+           </div>
         </Route>
         </Switch>
       </BrowserRouter>
@@ -76,8 +82,12 @@ function App() {
           <Route path="/newtrip">
             <NewTripForm user={user} trips={trips} setTrips={setTrips}/>
           </Route>
+          <Route path="/">
+            <Welcome />
+          </Route>
         </Switch>
-    </BrowserRouter></>
+    </BrowserRouter>
+    </>
   );
 }
 

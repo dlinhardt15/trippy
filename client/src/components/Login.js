@@ -31,6 +31,9 @@ function Login({ onLogin }) {
     <div>
     <form onSubmit={handleSubmit} className="entry-form">
         <p id="trippy-title">Trippy.</p>
+        {errors.map((err) => (
+          <div className="error-message" key={err}>{err}</div>
+        ))}
         <label htmlFor="username">Username: </label>
         <input
           type="text"
@@ -50,9 +53,7 @@ function Login({ onLogin }) {
         <button className="main-page-button" variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
         </button>
-        {/* {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))} */}
+        
         
     </form>
     {/* <br></br> */}

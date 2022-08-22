@@ -2,14 +2,22 @@ import TaskCard from "./TaskCard";
 import {useEffect, useState} from "react";
 import NewTaskForm from "./NewTaskForm";
 import '../css/TripCard.css';
+import { DateTime } from "luxon";
 
 export default function TripCard ({trip, handleDelete}) {
-    // const today = (new Date().toISOString().slice(0, 10))
-    console.log(typeof trip.departure_date)
+    const today = (new Date().toISOString().slice(0, 10))
+    const departureDate = (DateTime.fromISO(trip.departure_date))
+    console.log((departureDate - (new DateTime(today))))
     const [expandTasks, setExpandTasks] = useState(false)
     const [expandForm, setExpandForm] = useState(false)
     const [myTasks, setMyTasks] = useState([])
-
+    
+    // useEffect(() => {
+    //     fetch(`/trips/${trip.id}/tasks`)
+    //     .then(response => response.json())
+    //     .then(data => setMyTasks(data))
+    // }, [])  
+    
     const tripTasks = async () => {
         const allTasks = await trip.method_tasks.concat(trip.tasks)
         const sortedTasks = await allTasks.sort((a, b) => (a.due_date > b.due_date ? -1 : 1))
@@ -28,6 +36,8 @@ export default function TripCard ({trip, handleDelete}) {
         setExpandForm(expandForm ? false : true)
     }
 
+    
+
     return (
         <div id="individual-trip">
             <div className="trip-name">Trip: {trip.name}</div>
@@ -43,7 +53,7 @@ export default function TripCard ({trip, handleDelete}) {
                     )
                 })}</div>
             ) : null}
-            {expandForm ? (<div><NewTaskForm trip={trip}/></div>) : null}
+            {expandForm ? (<div><NewTaskForm setTasks={setMyTasks} myTasks={myTasks} trip={trip}/></div>) : null}
         </div>
     )
 }

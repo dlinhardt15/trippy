@@ -71,3 +71,19 @@ br {
   font-size: 12px;
   color: red;
 }
+
+.signup-message {
+  background-color: #31d425;
+  width: 400px;
+  font-size: 25px;
+  text-align: center;
+  /* vertical-align: center; */
+  border-radius: 30px;
+  margin: auto;
+  position: absolute;
+  top: auto;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  box-shadow: 3px 3px 3px 3px darkslategray;
+  padding: 10px;
+}

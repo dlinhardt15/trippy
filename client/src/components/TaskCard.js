@@ -12,7 +12,6 @@ export default function TaskCard ({task, setTasks, myTasks}) {
         setTasks(updatedTasks)
     }
 
-
     function handleUpdate (task) {
         if ("travel_method_id" in task) {
             fetch(`/methodtasks/${task.id}`, {

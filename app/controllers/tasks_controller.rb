@@ -22,6 +22,18 @@ class TasksController < ApplicationController
         render json: task, status: :accepted
     end
 
+    # def renderTasks
+    #     trip = Trip.find(params[:id])
+    #     tasks = trip.tasks
+    #     render json: tasks
+    # end
+
+    # def destroy
+    #     task = Task.find(params[:id])
+    #     task.destroy
+    #     head :no_content
+    # end
+
     private
 
     def task_params
