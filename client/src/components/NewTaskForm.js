@@ -1,7 +1,7 @@
 import {useState} from "react";
 import '../css/NewTaskForm.css';
 
-export default function NewTaskForm ({trip, setTasks, myTasks}) {
+export default function NewTaskForm ({trip, setMyTasks, myTasks}) {
     
     const defaultTaskData = {
         trip_id: trip.id,
@@ -20,7 +20,7 @@ export default function NewTaskForm ({trip, setTasks, myTasks}) {
     }
 
     function handleAddTask (e) {
-        e.preventDefault()
+        // e.preventDefault()
         fetch(`/trips/${trip.id}/tasks`, {
             method: "POST",
             headers: {
@@ -28,7 +28,7 @@ export default function NewTaskForm ({trip, setTasks, myTasks}) {
             },
             body: JSON.stringify(taskForm),
           }).then(response => response.json())
-          .then(data => setTasks([...myTasks, data]))
+          .then(data => setMyTasks([...myTasks, data]))
         setTaskForm(defaultTaskData)
     }
 
