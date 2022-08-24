@@ -49,7 +49,7 @@ function App() {
     <main>
       <BrowserRouter>
         <Switch>
-        <Route path="/signup">
+        <Route path="/signuppage">
            <SignUp onLogin={setUser}/>
            <div className="signup-message">
             Welcome to <strong>Trippy.</strong> Create an account to make sure you have everything you need for your upcoming trips.
@@ -76,7 +76,7 @@ function App() {
           <Route path="/welcome">
             <Welcome />
           </Route>
-          <Route path="/trips">
+          <Route path="/mytrips">
             <TripPage handleDelete={handleDelete} trips={trips} user={user}/>
           </Route>
           <Route path="/newtrip">

@@ -19,7 +19,7 @@ export default function NavBar ({setUser}) {
                     Home
                 </span>
             </NavLink>
-            <NavLink to="/trips">
+            <NavLink to="/mytrips">
                 <span>
                     Trips
                 </span>

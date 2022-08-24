@@ -58,7 +58,7 @@ function Login({ onLogin }) {
     </form>
     {/* <br></br> */}
     <p id="link-to-signup">Not a User Yet? <br></br>
-      <NavLink to="/signup">
+      <NavLink to="/signuppage">
         Sign Up Here!
       </NavLink>
     </p>
