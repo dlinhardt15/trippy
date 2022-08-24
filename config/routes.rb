@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   # post "/trips", to: "trips#create"
   get "/travelmethods", to: "travel_methods#index"
-  # get "/trips/:id/tasks", to: "tasks#renderTasks"
-  post "/trips/:id/tasks", to: "tasks#create"
+  get "/trips/:id/tasks", to: "tasks#renderTasks"
+  post "/tasks", to: "tasks#create"
   get "/tasks", to: "tasks#index"
   resources :trips, only: [:index, :create, :destroy]
   patch "/tasks/:id", to: "tasks#update"

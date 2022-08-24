@@ -11,8 +11,7 @@ class TasksController < ApplicationController
     end
 
     def create
-        trip = Trip.find(params[:trip_id])
-        task = trip.tasks.create!(task_params)
+        task = Task.create!(task_params)
         render json: task, status: :created
     end
 
@@ -22,11 +21,11 @@ class TasksController < ApplicationController
         render json: task, status: :accepted
     end
 
-    # def renderTasks
-    #     trip = Trip.find(params[:id])
-    #     tasks = trip.tasks
-    #     render json: tasks
-    # end
+    def renderTasks
+        trip = Trip.find(params[:id])
+        tasks = trip.tasks
+        render json: tasks
+    end
 
     # def destroy
     #     task = Task.find(params[:id])

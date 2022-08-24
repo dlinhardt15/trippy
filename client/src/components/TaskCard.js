@@ -1,15 +1,15 @@
 import '../css/TaskCard.css';
 
-export default function TaskCard ({task, setTasks, myTasks}) {
+export default function TaskCard ({task, setAllTasks, allTasks}) {
 
     function findTask (data) {
-        const updatedTasks = myTasks.map(task => {
+        const updatedTasks = allTasks.map(task => {
             if (task.name == data.name && task.description == data.description && task.id == data.id) {
                 return {...task, complete: data.complete}
             }
             return task
         })
-        setTasks(updatedTasks)
+        setAllTasks(updatedTasks)
     }
 
     function handleUpdate (task) {

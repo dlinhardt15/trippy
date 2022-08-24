@@ -15,23 +15,17 @@ export default function TripCard ({trip, handleDelete}) {
     const countdown = (Math.round(days))
     const [expandTasks, setExpandTasks] = useState(false)
     const [expandForm, setExpandForm] = useState(false)
-    const [myTasks, setMyTasks] = useState([])
+    const [allTasks, setAllTasks] = useState([])
     
-    // useEffect(() => {
-    //     fetch(`/trips/${trip.id}/tasks`)
-    //     .then(response => response.json())
-    //     .then(data => setMyTasks(data))
-    // }, [])  
-    
-    const tripTasks = async () => {
-        const allTasks = await trip.method_tasks.concat(trip.tasks)
-        const sortedTasks = await allTasks.sort((a, b) => (a.due_date > b.due_date ? -1 : 1))
-        setMyTasks(sortedTasks)
-    }
-
     useEffect(() => {
-        tripTasks()
-    }, [])
+        fetch(`/trips/${trip.id}/tasks`)
+        .then(response => response.json())
+        .then(data => setAllTasks([...data, ...trip.method_tasks].sort((a, b) => (a.due_date > b.due_date ? -1 : 1)))) 
+    }, [])  
+    
+    function handlePostState(newTask){
+        setAllTasks([...allTasks, newTask].sort((a, b) => (a.due_date > b.due_date ? -1 : 1)))
+    }
 
     function handleExpandTasks () {
         setExpandTasks(expandTasks ? false : true)
@@ -52,14 +46,14 @@ export default function TripCard ({trip, handleDelete}) {
             <button className="trip-button" onClick={handleExpandForm}>{expandForm ? "I have enough to do" : "Add a Task"}</button>
             <button className="trip-button" id="delete-trip" onClick={() => handleDelete(trip.id)}>Delete Trip</button>
             {/* {today - trip.departure_date} days left! */}
-            {(expandTasks && myTasks.length > 0) ? (
-                <div className="trip-tasks">{myTasks.map(task => {
+            {(expandTasks && allTasks.length > 0) ? (
+                <div className="trip-tasks">{allTasks.map(task => {
                     return (
-                        <TaskCard setTasks={setMyTasks} myTasks={myTasks} task={task}/>
+                        <TaskCard setAllTasks={setAllTasks} allTasks={allTasks} task={task}/>
                     )
                 })}</div>
             ) : null}
-            {expandForm ? (<div><NewTaskForm setMyTasks={setMyTasks} myTasks={myTasks} trip={trip}/></div>) : null}
+            {expandForm ? (<div><NewTaskForm handlePostState={handlePostState} trip={trip}/></div>) : null}
         </div>
     )
 }
