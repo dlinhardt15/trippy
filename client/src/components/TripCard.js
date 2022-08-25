@@ -34,7 +34,8 @@ export default function TripCard ({trip, handleDelete}) {
     function handleExpandForm () {
         setExpandForm(expandForm ? false : true)
     }
-
+    console.log(countdown)
+    console.log(hourCount)
     const countdownFeature = (countdown < 1 && hourCount < 1) ? "Enjoy Your Trip!" : `${countdown} day(s) and ${hourCount} hour(s) until your trip!`;
 
     return (
